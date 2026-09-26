@@ -1,0 +1,38 @@
+# Patch layer contributed by the dsh-wavnil bundle.
+#
+# Two rows:
+#   1. `wavnil`      - this package's provider plugin. Reads the Wavnil API key
+#                      (WAVNIL_API_KEY by default), exposes `ctx.wavnil` with the
+#                      MCP endpoint URL and auth headers, and registers the
+#                      `wavnil` skill that teaches the agent the posting workflow.
+#   2. `wavnil-mcp`  - one @deepseek-ai/dsh-mcp-client instance that connects to
+#                      the Wavnil MCP server over streamable HTTP and registers
+#                      its tools as mcp__wavnil__* (integrationList,
+#                      integrationSchema, schedulePostTool, ...).
+#
+# Configuration (override the `wavnil` row in your profile's cordis.patch.yml):
+#   apiKeyEnv  - env var holding the Wavnil API key (default: WAVNIL_API_KEY)
+#   apiKey     - inline key; prefer the env var or a .env file in $DSH_HOME
+#   baseUrl    - Wavnil host (default: https://mcp.wavnil.com; self-hosted
+#                instances use their own backend URL)
+#   skill      - register the `wavnil` workflow skill (default: true)
+- insert:
+    - id: wavnil
+      name: dsh-wavnil
+      config:
+        apiKeyEnv: WAVNIL_API_KEY
+        baseUrl: https://mcp.wavnil.com
+    - id: wavnil-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      inject: [wavnil]
+      config:
+        transport: streamable-http
+        serverName: wavnil
+        url: !!js ctx.wavnil.url
+        headers: !!js ctx.wavnil.headers
+        failOnStartupError: false
+        reconnect:
+          enabled: true
+          initialDelayMs: 2000
+          maxDelayMs: 30000
+          maxAttempts: 10

@@ -1,0 +1,11 @@
+{
+  "name": "wavnil",
+  "version": "2.0.19",
+  "description": "Wavnil social media automation: schedule, draft, and publish posts, manage connected channels, upload media, and track analytics across 28+ platforms including X, LinkedIn, Instagram, Facebook, Threads, TikTok, YouTube, Reddit, Bluesky, Mastodon, Discord, Slack, and Telegram. Bundles the wavnil skill and the hosted Wavnil MCP server.",
+  "mcpServers": {
+    "wavnil": {
+      "httpUrl": "https://mcp.wavnil.com/mcp-oauth-dynamic",
+      "description": "Official Wavnil MCP server (hosted, streamable HTTP). Authorizes via OAuth on first connection: Gemini CLI opens a browser to sign in to Wavnil; no token or local install required."
+    }
+  }
+}

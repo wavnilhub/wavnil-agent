@@ -1,0 +1,6 @@
+{
+  "wavnil": {
+    "type": "http",
+    "url": "https://mcp.wavnil.com/mcp-oauth-dynamic"
+  }
+}

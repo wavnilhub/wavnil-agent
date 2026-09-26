@@ -1,0 +1,30 @@
+{
+  "name": "wavnil",
+  "version": "2.0.19",
+  "description": "Wavnil social media automation. Schedule posts, manage integrations, upload media, and track analytics across 28+ platforms including X, LinkedIn, Reddit, YouTube, TikTok, and Instagram.",
+  "author": {
+    "name": "Wavnil",
+    "email": "contact@wavnil.com",
+    "url": "https://wavnil.com"
+  },
+  "homepage": "https://wavnil.com",
+  "repository": "https://github.com/wavnilhub/wavnil-agent",
+  "license": "AGPL-3.0",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "wavnil",
+    "wavnil cli",
+    "social media scheduler",
+    "social media agentic scheduler",
+    "schedule social media posts",
+    "social media automation"
+  ],
+  "skills": ["./skills/wavnil"],
+  "mcpServers": {
+    "wavnil": {
+      "type": "http",
+      "url": "https://mcp.wavnil.com/mcp-oauth-dynamic",
+      "note": "Official Wavnil MCP server (hosted, streamable HTTP). Authorizes via OAuth on first connection — the agent is prompted to sign in to Wavnil; no token or local install required. Lets the agent manage your social media posts"
+    }
+  }
+}
